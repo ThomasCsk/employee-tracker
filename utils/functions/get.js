@@ -1,26 +1,52 @@
 const db = require('../../db/connection');
 const cTable = require('console.table');
-const mysql = require('mysql2');
 
 db.connect(err => {
   if (err) throw err;
-  console.log('Database Connected!');
 })
 
 const getRoles = () => {
-  return ['role1','role2','role3']
+  const sql = `SELECT * FROM roles`
+  db.query(sql, (err, rows) => {
+    if(err){
+      console.log(err);
+      return
+    }
+    return rows;
+  })
 };
 
 const getManagers = () => {
-  return ['manager1','manager2','manager3']
+  const sql = `SELECT * FROM employees WHERE manager_id IS NOT NULL`
+  db.query(sql, (err, rows) => {
+    if(err){
+      console.log(err);
+      return
+    }
+    return rows;
+  })
 };
 
 const getEmployees = () => {
-  return ['employee1','employee2','employee3']
+  const sql = `SELECT * FROM employees`
+  db.query(sql, (err, rows) => {
+    if(err){
+      console.log(err);
+      return
+    }
+    return rows;
+  })
 }
 
 const getDepartments = () => {
-  return ['department1','department2','department3']
+  const sql = `SELECT * FROM departments`
+  db.query(sql, (err, rows) => {
+    if(err){
+      console.log(err);
+      return
+    }
+    return rows;
+  })
 }
 
 module.exports = {

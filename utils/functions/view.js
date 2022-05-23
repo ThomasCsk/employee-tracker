@@ -1,15 +1,32 @@
 const db = require('../../db/connection');
 const cTable = require('console.table');
-const mysql = require('mysql2');
 
 db.connect(err => {
   if (err) throw err;
-  console.log('Database Connected!');
 })
 
-const viewAllEmployees = () => {};
-const viewAllRoles = () => {};
-const viewAllDepartments = () => {};
+const viewAllEmployees = () => {
+  getEmployees().then(rows => {
+    return console.table(rows)
+  })
+};
+
+const viewAllRoles = () => {
+  getRoles().then(rows => {
+    return console.table(rows);
+  })
+};
+
+const viewAllDepartments = () => {
+  const sql = `SELECT * FROM departments`
+  db.query(sql, (err, rows) => {
+    if(err){
+      console.log(err);
+      return
+    }
+    return console.table(rows);
+  })
+};
 
 module.exports = {
   viewAllEmployees,

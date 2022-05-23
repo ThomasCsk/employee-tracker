@@ -27,7 +27,7 @@ const menu = () => {
   inquirer.prompt(menuQuestions)
   .then(answers => {
     if(answers.menu === 'View All Employees'){
-      //viewAllEmployees();
+      viewAllEmployees();
       return menu();
     }
     else if(answers.menu === 'Add Employee'){
@@ -47,7 +47,7 @@ const menu = () => {
       })
     }
     else if(answers.menu === 'View All Roles'){
-      //viewAllRoles();
+      viewAllRoles();
       return menu();
     }
     else if(answers.menu === 'Add Role'){
@@ -59,7 +59,7 @@ const menu = () => {
       })
     }
     else if(answers.menu === 'View All Departments'){
-      //viewAllDepartments();
+      viewAllDepartments();
       return menu();
     }
     else if(answers.menu === 'Add Department'){

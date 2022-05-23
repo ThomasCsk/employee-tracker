@@ -51,7 +51,7 @@ const addEmployeeQuestions = [
     type: 'list',
     name: 'manager',
     message: 'Who is this Employee\'s Manager?',
-    choices: getManagers()
+    choices: [getManagers(), 'None']
   }
 ]
 
