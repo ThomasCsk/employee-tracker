@@ -27,46 +27,54 @@ const menu = () => {
   inquirer.prompt(menuQuestions)
   .then(answers => {
     if(answers.menu === 'View All Employees'){
-      viewAllEmployees();
-      return menu();
+      viewAllEmployees()
+      .then(() => {
+        return menu();
+      })
     }
     else if(answers.menu === 'Add Employee'){
       inquirer.prompt(addEmployeeQuestions)
       .then(answers => {
-        //addEmployee(answers);
-        console.log('Employee Created!');
+        return addEmployee(answers);
+      })
+      .then(()=> {
         return menu();
       })
     }
     else if(answers.menu === 'Update Employee Role'){
       inquirer.prompt(updateRoleQuestions)
       .then(answers => {
-        //updateRole(answers);
-        console.log('Employee Role Updated!');
+        return updateRole(answers);
+      })
+      .then(()=> {
         return menu();
       })
     }
     else if(answers.menu === 'View All Roles'){
-      viewAllRoles();
-      return menu();
+      viewAllRoles().then(() => {
+        return menu();
+      })
     }
     else if(answers.menu === 'Add Role'){
       inquirer.prompt(addRoleQuestions)
       .then(answers => {
-        //addRole(answers)
-        console.log('Role Added!');
+        return addRole(answers);
+      })
+      .then(() => {
         return menu();
       })
     }
     else if(answers.menu === 'View All Departments'){
-      viewAllDepartments();
-      return menu();
+      viewAllDepartments().then(() => {
+        return menu();
+      })
     }
     else if(answers.menu === 'Add Department'){
       inquirer.prompt(addDepartmentQuestions)
       .then(answers => {
-        //addDepartment(answers);
-        console.log('Department Added!');
+        return addDepartment(answers);
+      })
+      .then(() => {
         return menu();
       })
     }
